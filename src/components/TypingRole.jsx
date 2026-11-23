@@ -4,7 +4,7 @@ const ROLES = [
   "Formatrice en IA",
   "Ingénieure en informatique",
   "Créatrice de vidéos IA",
-  "Développeuse web & portfolios",
+  "Développeuse web",
 ];
 
 export default function TypingRole() {

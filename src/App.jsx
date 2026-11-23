@@ -495,7 +495,7 @@ function App() {
             <div className="hero-actions-block">
               <p className="hero-description">
                 J'aide les marques, entreprises et entrepreneurs à décupler leur
-                visibilité grâce au <strong>développement web & portfolios sur-mesure</strong>,
+                visibilité grâce au <strong>développement web sur-mesure</strong>,
                 aux <strong>vidéos publicitaires propulsées par l'IA</strong> et à la
                 <strong> formation pratique en intelligence artificielle</strong>.
               </p>
