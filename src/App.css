@@ -619,9 +619,9 @@ video {
 }
 
 .hero-main-title {
-  font-size: clamp(52px, 5.8vw, 84px);
-  line-height: 0.92;
-  letter-spacing: -3.5px;
+  font-size: clamp(50px, 5.5vw, 82px);
+  line-height: 0.95;
+  letter-spacing: -3px;
   color: var(--text-dark);
   font-weight: 800;
 }
@@ -632,12 +632,39 @@ video {
   -webkit-text-fill-color: transparent;
 }
 
+.hero-main-title .hero-third-name {
+  color: var(--text-dark);
+}
+
+.hero-professional-titles {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 16px 0 12px;
+  letter-spacing: -0.2px;
+}
+
+.hero-professional-titles .pro-title {
+  color: var(--text-dark);
+}
+
+.hero-professional-titles .pro-title-sep {
+  color: var(--pink);
+  font-weight: 900;
+  font-size: 13px;
+  opacity: 0.7;
+}
+
 /* Dynamic Typing Role */
 .hero-dynamic-subtitle {
-  margin: 22px 0 16px;
-  font-size: clamp(21px, 2.2vw, 30px);
+  margin: 8px 0 16px;
+  font-size: clamp(20px, 2.1vw, 28px);
   font-weight: 700;
-  min-height: 42px;
+  min-height: 38px;
   display: flex;
   align-items: center;
 }
@@ -907,36 +934,48 @@ video {
 /* Floating Badges */
 .floating-card {
   position: absolute;
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(245, 43, 138, 0.20);
-  box-shadow: 0 18px 45px rgba(245, 43, 138, 0.18);
+  border: 1px solid rgba(245, 43, 138, 0.22);
+  box-shadow: 0 16px 40px rgba(245, 43, 138, 0.16);
   color: var(--text-dark);
-  padding: 12px 18px;
+  padding: 10px 16px;
   border-radius: var(--radius-md);
   display: flex;
   align-items: center;
   gap: 12px;
   z-index: 5;
-  transition: transform 0.2s ease-out, box-shadow 0.3s ease;
+  width: 195px;
+  box-sizing: border-box;
+  transition: transform 0.25s ease-out, box-shadow 0.3s ease;
 }
 
 .floating-card:hover {
   box-shadow: 0 24px 60px rgba(245, 43, 138, 0.28);
   border-color: var(--pink);
+  transform: translateY(-3px);
 }
 
 .card-badge-icon {
-  width: 42px;
-  height: 42px;
+  width: 38px;
+  height: 38px;
+  min-width: 38px;
   display: grid;
   place-items: center;
   background: var(--pink-gradient);
-  border-radius: 12px;
+  border-radius: 11px;
   flex-shrink: 0;
   color: #fff;
-  box-shadow: 0 4px 14px rgba(245, 43, 138, 0.28);
+  box-shadow: 0 6px 16px rgba(245, 43, 138, 0.26);
+}
+
+.floating-card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  text-align: left;
 }
 
 .floating-card strong {
@@ -945,27 +984,31 @@ video {
   font-weight: 700;
   color: var(--text-dark);
   line-height: 1.25;
+  white-space: nowrap;
 }
 
 .floating-card small {
   display: block;
   font-size: 11px;
   color: var(--muted);
+  line-height: 1.2;
+  margin-top: 2px;
+  white-space: nowrap;
 }
 
 .card-top {
-  top: 105px;
-  right: -15px;
-}
-
-.card-bottom {
-  bottom: 95px;
-  left: -20px;
+  top: 95px;
+  right: -25px;
 }
 
 .card-accent {
-  bottom: 220px;
-  right: -35px;
+  top: 240px;
+  left: -35px;
+}
+
+.card-bottom {
+  bottom: 85px;
+  right: -20px;
 }
 
 .anim-float-1 {
@@ -2519,44 +2562,94 @@ video {
   .hero {
     display: flex;
     flex-direction: column;
-    gap: 45px;
-    padding: 110px 18px 50px;
+    align-items: center;
+    gap: 0;
+    padding: 100px 18px 45px;
     text-align: center;
   }
 
+  /* Using display: contents; on hero-left allows hero-intro-block and hero-actions-block
+     to be reordered around hero-center (photo)! */
   .hero-left {
+    display: contents;
+  }
+
+  /* 1. Header / Identity Block - comes FIRST */
+  .hero-intro-block {
     order: 1;
     width: 100%;
-    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .hero-badge-wrap {
+    margin-bottom: 12px;
   }
 
   .hero-main-title {
-    font-size: clamp(44px, 14vw, 64px);
-    letter-spacing: -2px;
+    font-size: clamp(32px, 8.5vw, 46px);
+    line-height: 1.12;
+    letter-spacing: -1px;
+    margin-bottom: 12px;
+    font-weight: 800;
+  }
+
+  .hero-main-title .gradient-name {
+    display: inline;
+  }
+
+  .hero-main-title .hero-third-name {
+    display: inline;
+  }
+
+  .hero-professional-titles {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 6px 10px;
+    font-size: 13.5px;
+    font-weight: 700;
+    line-height: 1.45;
+    color: var(--text-dark);
+    max-width: 360px;
+    margin: 0 auto 12px auto;
+  }
+
+  .hero-professional-titles .pro-title {
+    color: #3b1828;
+    background: rgba(255, 255, 255, 0.75);
+    padding: 4px 9px;
+    border-radius: 6px;
+    border: 1px solid rgba(245, 43, 138, 0.15);
+  }
+
+  .hero-professional-titles .pro-title-sep {
+    color: var(--pink);
+    font-weight: 900;
+    font-size: 12px;
   }
 
   .hero-dynamic-subtitle {
     justify-content: center;
-    font-size: 20px;
-    min-height: 38px;
+    font-size: 18px;
+    min-height: 32px;
+    margin: 4px 0 0;
   }
 
-  .hero-actions {
-    justify-content: center;
-  }
-
-  .hero-actions .button {
-    width: 100%;
-  }
-
-  .hero-feature-tags {
-    justify-content: center;
-  }
-
+  /* 2. Photo & Floating Badges - comes IMMEDIATELY AFTER NAME & TITLES */
   .hero-center {
     order: 2;
     width: 100%;
-    height: 480px;
+    height: 440px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin: 15px 0 28px;
   }
 
   .hero-glow {
@@ -2575,23 +2668,51 @@ video {
   }
 
   .photo-frame {
-    width: 280px;
-    height: 390px;
-    border-radius: 150px 150px 24px 24px;
+    width: 270px;
+    height: 380px;
+    border-radius: 140px 140px 28px 28px;
+    box-shadow: 0 20px 50px rgba(245, 43, 138, 0.22);
+    position: relative;
+    z-index: 2;
   }
 
+  .hero-photo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+  }
+
+  .rotating-stamp-badge {
+    top: 5px;
+    left: 5px;
+    width: 90px;
+    height: 90px;
+    opacity: 0.85;
+    pointer-events: none;
+  }
+
+  /* 3 Presentation Badges on Mobile:
+     Harmonized dimensions, identical proportions, positioned to NOT hide her face! */
   .floating-card {
-    padding: 7px 11px;
+    padding: 8px 12px;
+    width: 172px;
+    max-width: 172px;
+    min-width: 172px;
     font-size: 11px;
     gap: 8px;
-    border-radius: 14px;
-    max-width: 175px;
-    box-shadow: 0 10px 25px rgba(245, 43, 138, 0.14);
+    border-radius: 13px;
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 12px 30px rgba(245, 43, 138, 0.18);
+    border: 1px solid rgba(245, 43, 138, 0.25);
+    box-sizing: border-box;
+    z-index: 6;
   }
 
   .card-badge-icon {
     width: 32px;
     height: 32px;
+    min-width: 32px;
     border-radius: 9px;
     flex-shrink: 0;
   }
@@ -2602,29 +2723,82 @@ video {
   }
 
   .floating-card strong {
-    font-size: 11px;
-    line-height: 1.25;
-  }
-
-  .floating-card small {
-    font-size: 9px;
+    font-size: 11.5px;
     line-height: 1.2;
   }
 
+  .floating-card small {
+    font-size: 9.5px;
+    line-height: 1.2;
+    margin-top: 1px;
+  }
+
+  /* Positioned around lower half and bottom of the frame:
+     Her face is at top: 0 to 180px - COMPLETELY UNOBSTRUCTED! */
   .card-top {
-    top: 30px;
-    right: -8px;
+    top: 215px;
+    right: -12px;
   }
 
   .card-accent {
     display: flex !important;
-    top: 175px;
+    top: 215px;
     left: -12px;
   }
 
   .card-bottom {
-    bottom: 30px;
-    right: -8px;
+    bottom: -16px;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%) !important;
+  }
+
+  /* 3. Description & Action Buttons - comes AFTER the Photo */
+  .hero-actions-block {
+    order: 3;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 35px;
+  }
+
+  .hero-description {
+    font-size: 14.5px;
+    line-height: 1.7;
+    margin-bottom: 24px;
+    max-width: 520px;
+  }
+
+  .hero-actions {
+    justify-content: center;
+    width: 100%;
+    max-width: 380px;
+    gap: 12px;
+  }
+
+  .hero-actions .button {
+    width: 100%;
+  }
+
+  .hero-feature-tags {
+    justify-content: center;
+    margin-top: 24px;
+    gap: 8px;
+  }
+
+  /* 4. Glass Card 01 — À PROPOS - comes 4th */
+  .hero-right {
+    order: 4;
+    width: 100%;
+    max-width: 100%;
+    padding: 26px 20px;
+    text-align: left;
+  }
+
+  .hero-right h3 {
+    font-size: 36px;
   }
 
   .project-visual.video-visual {
@@ -2648,18 +2822,6 @@ video {
   .series-ia-btn {
     width: 100%;
     justify-content: center;
-  }
-
-  .hero-right {
-    order: 3;
-    width: 100%;
-    max-width: 100%;
-    padding: 26px 20px;
-    text-align: left;
-  }
-
-  .hero-right h3 {
-    font-size: 36px;
   }
 
   /* Stats Mobile */
@@ -2776,12 +2938,23 @@ video {
 /* Small Mobiles (<= 380px) */
 @media (max-width: 380px) {
   .hero-main-title {
-    font-size: 38px;
+    font-size: 30px;
+  }
+
+  .hero-professional-titles {
+    font-size: 12px;
+    gap: 4px 6px;
   }
 
   .photo-frame {
     width: 240px;
     height: 340px;
+    border-radius: 120px 120px 24px 24px;
+  }
+
+  .hero-center {
+    height: 400px;
+    margin: 10px 0 20px;
   }
 
   .hero-circle {
@@ -2790,45 +2963,49 @@ video {
   }
 
   .floating-card {
+    width: 152px;
+    max-width: 152px;
+    min-width: 152px;
     padding: 6px 9px;
-    font-size: 10px;
     gap: 6px;
-    max-width: 155px;
+    border-radius: 11px;
   }
 
   .card-badge-icon {
-    width: 26px;
-    height: 26px;
-    border-radius: 7px;
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    border-radius: 8px;
   }
 
   .card-badge-icon svg {
-    width: 13px;
-    height: 13px;
+    width: 14px;
+    height: 14px;
   }
 
   .floating-card strong {
-    font-size: 10px;
+    font-size: 10.5px;
   }
 
   .floating-card small {
-    font-size: 8px;
+    font-size: 8.5px;
   }
 
   .card-top {
-    top: 20px;
-    right: -5px;
+    top: 195px;
+    right: -6px;
   }
 
   .card-accent {
     display: flex !important;
-    top: 150px;
-    left: -8px;
+    top: 195px;
+    left: -6px;
   }
 
   .card-bottom {
-    bottom: 20px;
-    right: -5px;
+    bottom: -14px;
+    left: 50%;
+    transform: translateX(-50%) !important;
   }
 
   .project-options {

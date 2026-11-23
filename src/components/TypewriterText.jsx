@@ -1,26 +1,33 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export default function TypewriterText({
   words = [],
-  delay = 200,
   speed = 70,
-  pauseTime = 2200,
+  pauseTime = 2500,
 }) {
   const [wordIndex, setWordIndex] = useState(0);
   const [displayText, setDisplayText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
   const [currentSpeed, setCurrentSpeed] = useState(speed);
-  const [hasStarted, setHasStarted] = useState(false);
+  const [inView, setInView] = useState(false);
+  const containerRef = useRef(null);
 
   useEffect(() => {
-    const startTimer = setTimeout(() => {
-      setHasStarted(true);
-    }, delay);
-    return () => clearTimeout(startTimer);
-  }, [delay]);
+    if (!containerRef.current) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+    observer.observe(containerRef.current);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
-    if (!hasStarted || !words || words.length === 0) return;
+    if (!inView || !words || words.length === 0) return;
 
     const currentWord = words[wordIndex % words.length];
 
@@ -33,7 +40,7 @@ export default function TypewriterText({
           setCurrentSpeed(pauseTime);
           setIsDeleting(true);
         } else {
-          setCurrentSpeed(speed + Math.random() * 25);
+          setCurrentSpeed(speed + Math.random() * 20);
         }
       } else {
         // Deleting backward
@@ -41,19 +48,19 @@ export default function TypewriterText({
         if (displayText.length - 1 === 0) {
           setIsDeleting(false);
           setWordIndex((prev) => (prev + 1) % words.length);
-          setCurrentSpeed(400);
+          setCurrentSpeed(350);
         } else {
-          setCurrentSpeed(30);
+          setCurrentSpeed(32);
         }
       }
     }, currentSpeed);
 
     return () => clearTimeout(timer);
-  }, [displayText, isDeleting, wordIndex, currentSpeed, hasStarted, words, speed, pauseTime]);
+  }, [displayText, isDeleting, wordIndex, currentSpeed, inView, words, speed, pauseTime]);
 
   return (
-    <span className="typewriter-text-wrapper">
-      <span className="typewriter-text">{displayText}</span>
+    <span ref={containerRef} className="typewriter-text-wrapper">
+      <span className="typewriter-text">{displayText || "\u00A0"}</span>
       <span className="typewriter-cursor" aria-hidden="true">
         |
       </span>

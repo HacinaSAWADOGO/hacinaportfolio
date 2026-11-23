@@ -55,7 +55,7 @@ const projects = [
     category: "Web",
     title: "Portfolio interactif & moderne",
     description: "Conception d'un portfolio sur-mesure avec animations fluides, typographie soignée et responsive design pour valoriser votre profil et vos projets.",
-    image: "/images/projet3.jpeg",
+    image: "/images/mockup.jpeg",
     badge: "Portfolio & Web",
   },
   {
@@ -463,58 +463,70 @@ function App() {
             }}
           ></div>
 
-          {/* Left Column */}
+          {/* Left Column (split into intro and actions for mobile reordering) */}
           <div className="hero-left hero-enter-left">
-            <div className="hero-badge-wrap">
-              <span className="hero-sparkle-pill">
-                <span className="sparkle-icon">✦</span>
-                COUCOU ET BIENVENUE, JE SUIS
-              </span>
+            <div className="hero-intro-block">
+              <div className="hero-badge-wrap">
+                <span className="hero-sparkle-pill">
+                  <span className="sparkle-icon">✦</span>
+                  COUCOU ET BIENVENUE, JE SUIS
+                </span>
+              </div>
+
+              <h1 className="hero-main-title">
+                Hacina <span className="gradient-name">Sawadogo</span>
+                <span className="hero-third-name"> Djamilatou</span>
+              </h1>
+
+              {/* Titres professionnels demandés */}
+              <div className="hero-professional-titles" aria-label="Titres professionnels">
+                <span className="pro-title">Ingénieure en informatique</span>
+                <span className="pro-title-sep">|</span>
+                <span className="pro-title">Développeuse web</span>
+                <span className="pro-title-sep">|</span>
+                <span className="pro-title">Créatrice de vidéos IA</span>
+              </div>
+
+              <div className="hero-dynamic-subtitle">
+                <TypingRole />
+              </div>
             </div>
 
-            <h1 className="hero-main-title">
-              Hacina
-              <br />
-              <span className="gradient-name">Sawadogo</span>
-            </h1>
+            <div className="hero-actions-block">
+              <p className="hero-description">
+                J'aide les marques, entreprises et entrepreneurs à décupler leur
+                visibilité grâce au <strong>développement web & portfolios sur-mesure</strong>,
+                aux <strong>vidéos publicitaires propulsées par l'IA</strong> et à la
+                <strong> formation pratique en intelligence artificielle</strong>.
+              </p>
 
-            <div className="hero-dynamic-subtitle">
-              <TypingRole />
-            </div>
+              <div className="hero-actions">
+                <a href="#realisations" className="button primary button-shimmer">
+                  <span>Voir mes réalisations</span>
+                  <span className="btn-arrow">→</span>
+                </a>
 
-            <p className="hero-description">
-              J'aide les marques, entreprises et entrepreneurs à décupler leur
-              visibilité grâce au <strong>développement web & portfolios sur-mesure</strong>,
-              aux <strong>vidéos publicitaires propulsées par l'IA</strong> et à la
-              <strong> formation pratique en intelligence artificielle</strong>.
-            </p>
+                <a href="#contact" className="button outline">
+                  Discutons de votre projet
+                </a>
+              </div>
 
-            <div className="hero-actions">
-              <a href="#realisations" className="button primary button-shimmer">
-                <span>Voir mes réalisations</span>
-                <span className="btn-arrow">→</span>
-              </a>
-
-              <a href="#contact" className="button outline">
-                Discutons de votre projet
-              </a>
-            </div>
-
-            {/* Quick highlight tags */}
-            <div className="hero-feature-tags">
-              <span className="feature-tag">
-                <Zap size={14} className="feature-icon" /> Rapide & Responsive
-              </span>
-              <span className="feature-tag">
-                <Video size={14} className="feature-icon" /> Vidéos IA Haute Qualité
-              </span>
-              <span className="feature-tag">
-                <GraduationCap size={14} className="feature-icon" /> Formations 100% Pratiques
-              </span>
+              {/* Quick highlight tags */}
+              <div className="hero-feature-tags">
+                <span className="feature-tag">
+                  <Zap size={14} className="feature-icon" /> Rapide & Responsive
+                </span>
+                <span className="feature-tag">
+                  <Video size={14} className="feature-icon" /> Vidéos IA Haute Qualité
+                </span>
+                <span className="feature-tag">
+                  <GraduationCap size={14} className="feature-icon" /> Formations 100% Pratiques
+                </span>
+              </div>
             </div>
           </div>
 
-          {/* Center Column: Interactive Parallax Portrait with Floating Badges */}
+          {/* Center Column: Interactive Parallax Portrait with 3 Harmonized Badges */}
           <div
             className="hero-center hero-enter-center"
             style={{
@@ -532,7 +544,7 @@ function App() {
             <div className="photo-frame">
               <img
                 src="/images/hacina.jpeg"
-                alt="Hacina Djamilatou Sawadogo - Formatrice en IA & Ingénieure Informatique"
+                alt="Hacina Sawadogo Djamilatou - Ingénieure en informatique & Formatrice IA"
                 className="hero-photo-img"
               />
               <div className="photo-shine-sweep"></div>
@@ -541,7 +553,7 @@ function App() {
             {/* Rotating Circular Stamp Badge */}
             <RotatingBadge />
 
-            {/* Floating Badges with independent physics */}
+            {/* 3 Floating Badges harmonized in size, typography and proportions */}
             <div
               className="floating-card card-top anim-float-1"
               style={{
@@ -550,12 +562,12 @@ function App() {
                 }px, 0)`,
               }}
             >
-              <span className="card-badge-icon">
-                <GraduationCap size={20} color="#fff" />
-              </span>
-              <div>
+              <div className="card-badge-icon">
+                <GraduationCap size={18} />
+              </div>
+              <div className="floating-card-body">
                 <strong>Formatrice en IA</strong>
-                <small>Particuliers & Entreprises</small>
+                <small>Coaching & Ateliers</small>
               </div>
             </div>
 
@@ -567,12 +579,12 @@ function App() {
                 }px, 0)`,
               }}
             >
-              <span className="card-badge-icon">
-                <Globe size={20} color="#fff" />
-              </span>
-              <div>
+              <div className="card-badge-icon">
+                <Globe size={18} />
+              </div>
+              <div className="floating-card-body">
                 <strong>Web & Digital</strong>
-                <small>Sites modernes 100% responsifs</small>
+                <small>Sites & Portfolios</small>
               </div>
             </div>
 
@@ -584,12 +596,12 @@ function App() {
                 }px, 0)`,
               }}
             >
-              <span className="card-badge-icon">
-                <Video size={20} color="#fff" />
-              </span>
-              <div>
+              <div className="card-badge-icon">
+                <Video size={18} />
+              </div>
+              <div className="floating-card-body">
                 <strong>Vidéos avec l'IA</strong>
-                <small>Contenus publicitaires percutants</small>
+                <small>Publicités & Avatars</small>
               </div>
             </div>
           </div>
@@ -929,7 +941,16 @@ function App() {
               <h2>
                 Mon écosystème
                 <br />
-                <em>technique & créatif.</em>
+                <em>
+                  <TypewriterText
+                    words={[
+                      "technique & créatif.",
+                      "axé sur l'innovation.",
+                      "alliant code & IA générative.",
+                      "performant et moderne.",
+                    ]}
+                  />
+                </em>
               </h2>
 
               <p>
@@ -957,7 +978,16 @@ function App() {
             <h2>
               Une démarche
               <br />
-              <em>créative, rigoureuse et humaine.</em>
+              <em>
+                <TypewriterText
+                  words={[
+                    "créative, rigoureuse et humaine.",
+                    "pensée pour votre réussite.",
+                    "à l'écoute de vos ambitions.",
+                    "orientée vers l'excellence.",
+                  ]}
+                />
+              </em>
             </h2>
           </div>
 
@@ -1002,7 +1032,16 @@ function App() {
             <h2>
               De l'idée initiale
               <br />
-              <em>à la réalisation concrète.</em>
+              <em>
+                <TypewriterText
+                  words={[
+                    "à la réalisation concrète.",
+                    "vers un résultat d'exception.",
+                    "avec un accompagnement pas à pas.",
+                    "jusqu'à votre entière satisfaction.",
+                  ]}
+                />
+              </em>
             </h2>
           </div>
 
@@ -1049,7 +1088,16 @@ function App() {
             <h2>
               Donnez vie
               <br />
-              <em>à votre prochain projet.</em>
+              <em>
+                <TypewriterText
+                  words={[
+                    "à votre prochain projet.",
+                    "à vos idées les plus créatives.",
+                    "à votre présence digitale.",
+                    "à votre visibilité en ligne.",
+                  ]}
+                />
+              </em>
             </h2>
             <p>
               Sélectionnez le type de projet qui vous intéresse et discutons
@@ -1154,7 +1202,16 @@ function App() {
               <h2>
                 Apprenez à créer
                 <br />
-                avec <em>l'intelligence artificielle.</em>
+                <em>
+                  <TypewriterText
+                    words={[
+                      "avec l'intelligence artificielle.",
+                      "des contenus captivants & viraux.",
+                      "des vidéos publicitaires percutantes.",
+                      "en maîtrisant les meilleurs outils IA.",
+                    ]}
+                  />
+                </em>
               </h2>
 
               <p>
@@ -1214,7 +1271,16 @@ function App() {
             <h2>
               Questions
               <br />
-              <em>fréquentes.</em>
+              <em>
+                <TypewriterText
+                  words={[
+                    "fréquentes.",
+                    "sur mes services & formations.",
+                    "sur le déroulement des projets.",
+                    "et réponses transparentes.",
+                  ]}
+                />
+              </em>
             </h2>
             <p>
               Retrouvez ici les réponses aux questions les plus posées sur mes
@@ -1255,7 +1321,17 @@ function App() {
             <div className="contact-intro">
               <span className="section-label">CONTACT DIRECT</span>
               <h2>
-                Vous avez un <em>projet ?</em>
+                Vous avez un{" "}
+                <em>
+                  <TypewriterText
+                    words={[
+                      "projet à concrétiser ?",
+                      "besoin en vidéo IA ?",
+                      "site web à développer ?",
+                      "projet de formation ?",
+                    ]}
+                  />
+                </em>
               </h2>
               <p>
                 Remplissez simplement ce court formulaire et poursuivons
