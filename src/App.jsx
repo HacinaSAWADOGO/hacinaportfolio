@@ -2,30 +2,46 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import HeroCanvas from "./components/HeroCanvas";
 import TypingRole from "./components/TypingRole";
+import TypewriterText from "./components/TypewriterText";
 import AnimatedCounter from "./components/AnimatedCounter";
 import TiltCard from "./components/TiltCard";
 import ScrollProgress from "./components/ScrollProgress";
 import CursorSparkles from "./components/CursorSparkles";
 import RotatingBadge from "./components/RotatingBadge";
 import LiveActivityToast from "./components/LiveActivityToast";
+import {
+  Globe,
+  Video,
+  GraduationCap,
+  Zap,
+  Sparkles,
+  MessageSquare,
+  Check,
+  ExternalLink,
+  Cpu,
+  Layers,
+  TrendingUp,
+  UserCheck,
+  Film,
+} from "lucide-react";
 
 const services = [
   {
-    icon: "💻",
-    title: "Développement web",
-    text: "Création de sites et solutions web modernes, responsives et adaptées aux besoins de votre activité.",
+    icon: Globe,
+    title: "Développement web & Portfolios",
+    text: "Création de portfolios personnalisés, de sites vitrines et de solutions web modernes, responsives et adaptés aux besoins de votre activité.",
     destination: "Web",
-    tag: "Moderne & Rapide",
+    tag: "Portfolios & Web Moderne",
   },
   {
-    icon: "🎬",
+    icon: Video,
     title: "Vidéos publicitaires avec l'IA",
     text: "Création de vidéos publicitaires percutantes grâce aux outils d'intelligence artificielle pour mettre en valeur vos produits et votre marque.",
-    destination: "Vidéo IA",
+    destination: "Vidéos publicitaires",
     tag: "Percutant & Créatif",
   },
   {
-    icon: "🎓",
+    icon: GraduationCap,
     title: "Formation en IA",
     text: "Formations pratiques et personnalisées pour apprendre à utiliser l'intelligence artificielle dans différents domaines.",
     destination: "Formations",
@@ -34,37 +50,86 @@ const services = [
 ];
 
 const projects = [
+  // Web & Portfolios
   {
-    category: "Vidéo IA",
-    title: "Création publicitaire avec l'IA",
-    description: "Contenu publicitaire créatif et captivant réalisé avec des outils d'intelligence artificielle générative.",
-    image: "/images/projet1.jpeg",
-    link: "/projets/creation-ia",
-    badge: "Vidéo & IA",
-  },
-  {
-    category: "Vidéo IA",
-    title: "Vidéo publicitaire de marque",
-    description: "Conception et réalisation avec l'IA d'une vidéo destinée à promouvoir un produit et captiver l'audience.",
-    image: "/images/projet2.jpeg",
-    link: "/projets/video-publicitaire",
-    badge: "Publicité IA",
+    category: "Web",
+    title: "Portfolio interactif & moderne",
+    description: "Conception d'un portfolio sur-mesure avec animations fluides, typographie soignée et responsive design pour valoriser votre profil et vos projets.",
+    image: "/images/projet3.jpeg",
+    badge: "Portfolio & Web",
   },
   {
     category: "Web",
-    title: "Application web responsive",
-    description: "Conception d'une interface web moderne, fluide, responsive et optimisée pour l'expérience utilisateur.",
-    image: "/images/projet3.jpeg",
-    link: "/projets/projet-web",
-    badge: "Développement Web",
+    title: "Plateforme digitale & Vitrine sur-mesure",
+    description: "Architecture logicielle soignée, navigation intuitive et design professionnel pour valoriser votre marque et vos services.",
+    image: "/images/ordi.jpeg",
+    badge: "Solution Web",
+  },
+
+  // Vidéos publicitaires
+  {
+    category: "Vidéos publicitaires",
+    title: "Spot publicitaire de marque IA",
+    description: "Création publicitaire captivante et moderne réalisée avec les meilleurs modèles d'IA générative vidéo pour maximiser votre impact.",
+    video: "/videos/videos publicitaires/3.mp4",
+    badge: "Publicité IA",
   },
   {
-    category: "Design IA",
-    title: "Affiches & Identité Visuelle",
-    description: "Création graphique professionnelle, affiches promotionnelles et visuels de marque assistés par l'IA.",
-    image: "/images/affiche1.png",
-    link: "/projets/creation-graphique",
-    badge: "Direction Artistique",
+    category: "Vidéos publicitaires",
+    title: "Vidéo promotionnelle commerciale",
+    description: "Réalisation audiovisuelle dynamique mettant en valeur vos offres avec un rythme soigné, des transitions et un montage percutant.",
+    video: "/videos/videos publicitaires/4.mp4",
+    badge: "Spot Commercial",
+  },
+  {
+    category: "Vidéos publicitaires",
+    title: "Format court réseaux sociaux",
+    description: "Production vidéo percutante adaptée aux formats verticaux (TikTok, Reels, Shorts) pour capter l'attention et générer de l'engagement.",
+    video: "/videos/videos publicitaires/5.mp4",
+    badge: "Réseaux Sociaux",
+  },
+
+  // Vidéos avatar
+  {
+    category: "Vidéos avatar",
+    title: "Avatar IA — Présentateur virtuel",
+    description: "Porte-parole digital réaliste généré par IA, synchronisation labiale précise et voix naturelle pour vos présentations d'entreprise.",
+    video: "/videos/videos avatar/6.mp4",
+    badge: "Avatar Virtuel",
+  },
+  {
+    category: "Vidéos avatar",
+    title: "Avatar marketing & communication",
+    description: "Incarnation virtuelle de marque pour dynamiser vos messages promotionnels, humaniser votre communication et automatiser vos vidéos.",
+    video: "/videos/videos avatar/7.mp4",
+    badge: "Communication IA",
+  },
+  {
+    category: "Vidéos avatar",
+    title: "Capsule explicative interactive",
+    description: "Démonstrations et vulgarisation avec personnage virtuel animé par intelligence artificielle pour former, guider et convaincre.",
+    video: "/videos/videos avatar/8.mp4",
+    badge: "Capsule Démo",
+  },
+
+  // Séries IA
+  {
+    category: "Séries IA",
+    title: "Série fictionnelle IA — Épisode 1",
+    description: "Création narrative complète générée par IA : ambiance cinématographique, personnages cohérents et univers immersif captivant.",
+    video: "/videos/series IA/1.mp4",
+    link: "https://www.facebook.com/share/19xfBgqXfK/",
+    isExternal: true,
+    badge: "Série IA",
+  },
+  {
+    category: "Séries IA",
+    title: "Série fictionnelle IA — Épisode 2",
+    description: "Suite de la saga visuelle originale : mise en scène soignée, narration rythmée, sound design et direction artistique propulsée par l'IA.",
+    video: "/videos/series IA/2.mp4",
+    link: "https://www.facebook.com/share/19xfBgqXfK/",
+    isExternal: true,
+    badge: "Série IA",
   },
 ];
 
@@ -82,7 +147,7 @@ const tools = [
 
 const stats = [
   { end: 100, suffix: "%", label: "Satisfaction & écoute", desc: "Un accompagnement humain et sur-mesure" },
-  { end: 15, suffix: "+", label: "Projets & créations", desc: "Sites web, vidéos et affiches percutantes" },
+  { end: 15, suffix: "+", label: "Vidéos réalisées", desc: "Vidéos publicitaires, avatars et séries IA" },
   { end: 9, suffix: "h", label: "Formation intensive", desc: "3 jours x 3h pour maîtriser l'IA de A à Z" },
   { end: 100, suffix: "%", label: "Créativité & Innovation", desc: "Le meilleur de l'informatique et de l'IA" },
 ];
@@ -238,7 +303,13 @@ function App() {
     }, 100);
   };
 
-  const categories = ["Tous", "Web", "Vidéo IA", "Design IA"];
+  const categories = [
+    "Tous",
+    "Web",
+    "Vidéos publicitaires",
+    "Vidéos avatar",
+    "Séries IA",
+  ];
 
   const filteredProjects =
     activeCategory === "Tous"
@@ -326,7 +397,7 @@ function App() {
               setMenuOpen(false);
             }}
           >
-            💬 Me contacter
+            <MessageSquare size={16} /> Me contacter
           </button>
         </nav>
 
@@ -413,7 +484,7 @@ function App() {
 
             <p className="hero-description">
               J'aide les marques, entreprises et entrepreneurs à décupler leur
-              visibilité grâce au <strong>développement web sur-mesure</strong>,
+              visibilité grâce au <strong>développement web & portfolios sur-mesure</strong>,
               aux <strong>vidéos publicitaires propulsées par l'IA</strong> et à la
               <strong> formation pratique en intelligence artificielle</strong>.
             </p>
@@ -431,9 +502,15 @@ function App() {
 
             {/* Quick highlight tags */}
             <div className="hero-feature-tags">
-              <span className="feature-tag">⚡ Rapide & Responsive</span>
-              <span className="feature-tag">🎬 Vidéos IA Haute Qualité</span>
-              <span className="feature-tag">💡 Formations 100% Pratiques</span>
+              <span className="feature-tag">
+                <Zap size={14} className="feature-icon" /> Rapide & Responsive
+              </span>
+              <span className="feature-tag">
+                <Video size={14} className="feature-icon" /> Vidéos IA Haute Qualité
+              </span>
+              <span className="feature-tag">
+                <GraduationCap size={14} className="feature-icon" /> Formations 100% Pratiques
+              </span>
             </div>
           </div>
 
@@ -473,25 +550,12 @@ function App() {
                 }px, 0)`,
               }}
             >
-              <span className="card-badge-icon">🎓</span>
+              <span className="card-badge-icon">
+                <GraduationCap size={20} color="#fff" />
+              </span>
               <div>
                 <strong>Formatrice en IA</strong>
                 <small>Particuliers & Entreprises</small>
-              </div>
-            </div>
-
-            <div
-              className="floating-card card-bottom anim-float-2"
-              style={{
-                transform: `translate3d(${mouseParallax.x * 1.5}px, ${
-                  mouseParallax.y * 1.5
-                }px, 0)`,
-              }}
-            >
-              <span className="card-badge-icon">🎬</span>
-              <div>
-                <strong>Vidéos avec l'IA</strong>
-                <small>Contenus publicitaires percutants</small>
               </div>
             </div>
 
@@ -503,10 +567,29 @@ function App() {
                 }px, 0)`,
               }}
             >
-              <span className="card-badge-icon">💻</span>
+              <span className="card-badge-icon">
+                <Globe size={20} color="#fff" />
+              </span>
               <div>
                 <strong>Web & Digital</strong>
                 <small>Sites modernes 100% responsifs</small>
+              </div>
+            </div>
+
+            <div
+              className="floating-card card-bottom anim-float-2"
+              style={{
+                transform: `translate3d(${mouseParallax.x * 1.5}px, ${
+                  mouseParallax.y * 1.5
+                }px, 0)`,
+              }}
+            >
+              <span className="card-badge-icon">
+                <Video size={20} color="#fff" />
+              </span>
+              <div>
+                <strong>Vidéos avec l'IA</strong>
+                <small>Contenus publicitaires percutants</small>
               </div>
             </div>
           </div>
@@ -518,7 +601,17 @@ function App() {
             <h3>
               Créative.
               <br />
-              <span>Technologique.</span>
+              <span className="typing-highlight">
+                <TypewriterText
+                  words={[
+                    "Technologique.",
+                    "Innovante.",
+                    "Visionnaire.",
+                    "Passionnée.",
+                  ]}
+                  delay={400}
+                />
+              </span>
             </h3>
 
             <p>
@@ -574,7 +667,17 @@ function App() {
             <h2>
               Derrière les projets,
               <br />
-              <em>il y a une passion & une expertise.</em>
+              <em>
+                <TypewriterText
+                  words={[
+                    "il y a une passion & une expertise.",
+                    "il y a la puissance de l'IA.",
+                    "il y a la rigueur du code.",
+                    "il y a un résultat d'exception.",
+                  ]}
+                  delay={600}
+                />
+              </em>
             </h2>
           </div>
 
@@ -650,7 +753,17 @@ function App() {
             <h2>
               Ce que je peux
               <br />
-              <em>réaliser pour vous.</em>
+              <em>
+                <TypewriterText
+                  words={[
+                    "réaliser pour vous.",
+                    "développer pour votre marque.",
+                    "automatiser grâce à l'IA.",
+                    "concevoir sur-mesure.",
+                  ]}
+                  delay={500}
+                />
+              </em>
             </h2>
 
             <p>
@@ -660,31 +773,36 @@ function App() {
           </div>
 
           <div className="services-grid">
-            {services.map((service, index) => (
-              <TiltCard key={index} className="service-card-tilt reveal-on-scroll">
-                <article className="service-card">
-                  <div className="service-top-row">
-                    <div className="service-icon-box">{service.icon}</div>
-                    <span className="service-number">0{index + 1}</span>
-                  </div>
+            {services.map((service, index) => {
+              const ServiceIcon = service.icon;
+              return (
+                <TiltCard key={index} className="service-card-tilt reveal-on-scroll">
+                  <article className="service-card">
+                    <div className="service-top-row">
+                      <div className="service-icon-box">
+                        <ServiceIcon size={26} strokeWidth={1.9} />
+                      </div>
+                      <span className="service-number">0{index + 1}</span>
+                    </div>
 
-                  <span className="service-tag-pill">{service.tag}</span>
+                    <span className="service-tag-pill">{service.tag}</span>
 
-                  <h3>{service.title}</h3>
+                    <h3>{service.title}</h3>
 
-                  <p>{service.text}</p>
+                    <p>{service.text}</p>
 
-                  <button
-                    type="button"
-                    className="service-btn"
-                    onClick={() => handleServiceClick(service)}
-                  >
-                    <span>En savoir plus</span>
-                    <span className="btn-arrow">→</span>
-                  </button>
-                </article>
-              </TiltCard>
-            ))}
+                    <button
+                      type="button"
+                      className="service-btn"
+                      onClick={() => handleServiceClick(service)}
+                    >
+                      <span>En savoir plus</span>
+                      <span className="btn-arrow">→</span>
+                    </button>
+                  </article>
+                </TiltCard>
+              );
+            })}
           </div>
         </section>
 
@@ -693,13 +811,22 @@ function App() {
           <div className="section-heading reveal-on-scroll">
             <span>04 — MES RÉALISATIONS</span>
             <h2>
-              Quelques projets
+              Quelques réalisations
               <br />
-              <em>qui prennent vie sous vos yeux.</em>
+              <em>
+                <TypewriterText
+                  words={[
+                    "qui prennent vie sous vos yeux.",
+                    "pensées pour captiver votre audience.",
+                    "propulsées par l'IA et le web.",
+                    "qui valorisent votre activité.",
+                  ]}
+                  delay={700}
+                />
+              </em>
             </h2>
             <p>
-              Explorez mes récents travaux en vidéo publicitaire IA, en développement
-              web et en conception graphique.
+              Explorez mes récents travaux : solutions web & portfolios, vidéos publicitaires, avatars animés et séries fictionnelles IA.
             </p>
           </div>
 
@@ -723,19 +850,23 @@ function App() {
             {filteredProjects.map((project, index) => (
               <TiltCard key={project.title + index} className="project-card-tilt reveal-on-scroll">
                 <article className="project-card">
-                  <div className="project-visual">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      loading="lazy"
-                      className="project-img"
-                    />
-
-                    <div className="project-visual-overlay">
-                      <a href={project.link} className="project-quick-view-btn">
-                        Découvrir les détails ↗
-                      </a>
-                    </div>
+                  <div className={`project-visual ${project.video ? "video-visual" : ""}`}>
+                    {project.video ? (
+                      <video
+                        src={project.video}
+                        controls
+                        playsInline
+                        preload="metadata"
+                        className="project-video-el"
+                      />
+                    ) : (
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        loading="lazy"
+                        className="project-img"
+                      />
+                    )}
 
                     <span className="project-category-badge">
                       {project.badge || project.category}
@@ -745,15 +876,49 @@ function App() {
                   <div className="project-info">
                     <h3>{project.title}</h3>
                     <p>{project.description}</p>
-                    <a href={project.link} className="project-detail-link">
-                      <span>Explorer le projet</span>
-                      <span className="link-arrow">→</span>
-                    </a>
+                    {project.isExternal && (
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="project-detail-link external"
+                      >
+                        <span>Regarder sur Facebook</span>
+                        <ExternalLink size={15} />
+                      </a>
+                    )}
                   </div>
                 </article>
               </TiltCard>
             ))}
           </div>
+
+          {/* Facebook Séries IA CTA Banner */}
+          {(activeCategory === "Séries IA" || activeCategory === "Tous") && (
+            <div className="series-ia-banner reveal-on-scroll">
+              <div className="series-ia-banner-left">
+                <div className="series-ia-banner-icon">
+                  <Film size={26} strokeWidth={2} />
+                </div>
+                <div className="series-ia-banner-text">
+                  <h4>Envie de découvrir plus d'épisodes de mes Séries IA ?</h4>
+                  <p>
+                    Suivez mes histoires, sagas narratives et nouvelles créations de séries
+                    générées par IA directement sur ma page Facebook officielle.
+                  </p>
+                </div>
+              </div>
+              <a
+                href="https://www.facebook.com/share/19xfBgqXfK/"
+                target="_blank"
+                rel="noreferrer"
+                className="button primary button-shimmer series-ia-btn"
+              >
+                <span>Regarder plus sur Facebook</span>
+                <ExternalLink size={16} />
+              </a>
+            </div>
+          )}
         </section>
 
         {/* ================= SKILLS ================= */}
@@ -894,11 +1059,11 @@ function App() {
 
           <div className="project-options">
             {[
-              ["💻", "Développement web"],
-              ["🎬", "Vidéo publicitaire avec l'IA"],
-              ["🎓", "Formation en IA"],
-              ["💬", "Autre projet sur-mesure"],
-            ].map(([icon, title]) => (
+              { icon: Globe, title: "Développement web & Portfolios" },
+              { icon: Video, title: "Vidéo publicitaire avec l'IA" },
+              { icon: GraduationCap, title: "Formation en IA" },
+              { icon: Sparkles, title: "Autre projet sur-mesure" },
+            ].map(({ icon: OptIcon, title }) => (
               <button
                 key={title}
                 type="button"
@@ -907,9 +1072,15 @@ function App() {
                 }`}
                 onClick={() => setProjectType(title)}
               >
-                <span className="opt-icon">{icon}</span>
+                <span className="opt-icon">
+                  <OptIcon size={22} strokeWidth={1.8} />
+                </span>
                 <span className="opt-title">{title}</span>
-                {projectType === title && <span className="opt-check">✓</span>}
+                {projectType === title && (
+                  <span className="opt-check">
+                    <Check size={16} strokeWidth={2.5} />
+                  </span>
+                )}
               </button>
             ))}
           </div>
@@ -994,13 +1165,27 @@ function App() {
               </p>
 
               <div className="formation-features-row">
-                <span className="form-feat">⚙️ Automatisation</span>
-                <span className="form-feat">✨ Motion design</span>
-                <span className="form-feat">💻 Création de site web</span>
-                <span className="form-feat">🔥 Vidéos virales & vidéos publicitaires</span>
-                <span className="form-feat">👤 Vidéo avatar</span>
-                <span className="form-feat">🎬 Séries IA</span>
-                <span className="form-feat">🍉 Vidéos fruits</span>
+                <span className="form-feat">
+                  <Cpu size={15} /> Automatisation
+                </span>
+                <span className="form-feat">
+                  <Sparkles size={15} /> Motion design
+                </span>
+                <span className="form-feat">
+                  <Globe size={15} /> Création de site web
+                </span>
+                <span className="form-feat">
+                  <TrendingUp size={15} /> Vidéos virales & publicitaires
+                </span>
+                <span className="form-feat">
+                  <UserCheck size={15} /> Vidéo avatar
+                </span>
+                <span className="form-feat">
+                  <Film size={15} /> Séries IA
+                </span>
+                <span className="form-feat">
+                  <Layers size={15} /> Vidéos créatives & fruits
+                </span>
               </div>
 
               <div className="formation-btn-row">
@@ -1011,7 +1196,7 @@ function App() {
                   className="button white button-shimmer"
                 >
                   <span>Découvrir le programme complet</span>
-                  <span className="btn-arrow">↗</span>
+                  <ExternalLink size={16} />
                 </a>
 
                 <a href="#contact" className="button outline-white">
@@ -1086,7 +1271,7 @@ function App() {
                 const reason = e.target.reason.value;
 
                 const message = encodeURIComponent(
-                  `Bonjour Hacina 👋\n\nJe suis ${name}.\nJe vous contacte concernant :\n${reason}`
+                  `Bonjour Hacina,\n\nJe m'appelle ${name}.\nJe vous contacte concernant :\n${reason}`
                 );
 
                 window.open(
@@ -1160,7 +1345,11 @@ function App() {
         title="Discuter sur WhatsApp"
       >
         <span className="whatsapp-pulse-ring"></span>
-        <span className="whatsapp-icon">💬</span>
+        <span className="whatsapp-icon">
+          <svg className="whatsapp-icon-svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+          </svg>
+        </span>
         <span className="whatsapp-text">Discuter sur WhatsApp</span>
       </a>
     </div>

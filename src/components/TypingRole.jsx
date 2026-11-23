@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 
 const ROLES = [
-  "Formatrice en IA 🎓",
-  "Ingénieure en informatique 💻",
-  "Créatrice de vidéos IA 🎬",
-  "Développeuse web moderne 🚀",
+  "Formatrice en IA",
+  "Ingénieure en informatique",
+  "Créatrice de vidéos IA",
+  "Développeuse web & portfolios",
 ];
 
 export default function TypingRole() {

@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
+import { Sparkles, Video, Globe, Layers, UserCheck } from "lucide-react";
 
 const ACTIVITIES = [
-  { icon: "✨", title: "Nouvelle formation IA réservée", time: "Il y a 10 min", location: "Session 9h intensive" },
-  { icon: "🎬", title: "Vidéo publicitaire IA finalisée", time: "Il y a 35 min", location: "Format viral 9:16" },
-  { icon: "💻", title: "Application web responsive déployée", time: "Il y a 1h", location: "React & CSS moderne" },
-  { icon: "🍉", title: "Projet 'Vidéos Fruits' en rendu", time: "Il y a 2h", location: "Motion & IA" },
-  { icon: "👤", title: "Vidéo Avatar IA personnalisée", time: "Aujourd'hui", location: "Publicité de marque" },
+  { icon: Sparkles, title: "Nouvelle formation IA réservée", time: "Il y a 10 min", location: "Session 9h intensive" },
+  { icon: Video, title: "Vidéo publicitaire IA finalisée", time: "Il y a 35 min", location: "Format viral 9:16" },
+  { icon: Globe, title: "Application web responsive déployée", time: "Il y a 1h", location: "React & CSS moderne" },
+  { icon: Layers, title: "Création vidéo IA en cours", time: "Il y a 2h", location: "Motion & IA" },
+  { icon: UserCheck, title: "Vidéo Avatar IA personnalisée", time: "Aujourd'hui", location: "Publicité de marque" },
 ];
 
 export default function LiveActivityToast() {
@@ -39,10 +40,13 @@ export default function LiveActivityToast() {
   if (dismissed) return null;
 
   const current = ACTIVITIES[currentIdx];
+  const IconComponent = current.icon;
 
   return (
     <div className={`live-activity-toast ${visible ? "show" : ""}`}>
-      <div className="activity-icon-glow">{current.icon}</div>
+      <div className="activity-icon-glow">
+        <IconComponent size={17} strokeWidth={2} />
+      </div>
       <div className="activity-info">
         <strong className="activity-title">{current.title}</strong>
         <div className="activity-meta">
