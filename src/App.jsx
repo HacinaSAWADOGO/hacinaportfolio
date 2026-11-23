@@ -55,7 +55,7 @@ const projects = [
     category: "Web",
     title: "Portfolio interactif & moderne",
     description: "Conception d'un portfolio sur-mesure avec animations fluides, typographie soignée et responsive design pour valoriser votre profil et vos projets.",
-    image: "/images/mockup.jpeg",
+    image: "/images/voile.jpeg",
     badge: "Portfolio & Web",
   },
   {
